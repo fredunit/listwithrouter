@@ -69,7 +69,7 @@ app.post('/restaurants/new', (req, res) => {
 })
 
 //edit and update restaurants
-app.get('/:id/edit', (req, res) => {
+app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
@@ -77,26 +77,29 @@ app.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/:id/edit/update', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
+  const {name, category, image,
+        location, phone, rating,
+        google_map, description} = req.body
   return Restaurant.findById(id)
     .then(restaurant => {
-      restaurant.name = req.body.name
-      restaurant.category = req.body.category
-      restaurant.image = req.body.image
-      restaurant.loction = req.body.location
-      restaurant.phone = req.body.phone
-      restaurant.rating = req.body.rating
-      restaurant.google_map = req.body.google_map
-      restaurant.description = req.body.description
-      return restaurant.save()
-    })
+        restaurant.name = name
+        restaurant.category = category
+        restaurant.image = image
+        restaurant.loction = location
+        restaurant.phone = phone
+        restaurant.rating = rating
+        restaurant.google_map = google_map
+        restaurant.description = description
+        return restaurant.save()
+      })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 
 //delete
-app.post('/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
   .then(restaurant => restaurant.remove())

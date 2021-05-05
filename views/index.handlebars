@@ -28,10 +28,10 @@
             <img src="{{this.image}}" class="card-img-top thumbnails" alt="Card image cap">
           </a>
           <div class="card-footer">
-            <form action="/{{ this._id }}/edit" method="GET">
+            <form action="/restaurants/{{ this._id }}/edit" method="GET">
               <button type="submit" class="edit-btn">編輯</button>
             </form>
-            <form action="/{{ this._id }}?_method=DELETE" method="POST">
+            <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST">
               <button type="submit" class="delete-btn" id="delete-btn">刪除</button>
             </form>
           </div>
