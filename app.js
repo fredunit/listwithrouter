@@ -7,18 +7,7 @@ const exphbs = require('express-handlebars')
 
 const methodOverride = require('method-override')
 const routes = require('./routes')
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-
-
-const db = mongoose.connection
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
+require('./config/mongoose')
 
 
 //setting template engine
