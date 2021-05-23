@@ -21,7 +21,7 @@ git clone https://github.com/fredunit/restaurant_list.git
 cd restaurant_list //切換到這個資料夾
 ```
 ```
-npm install //安裝套件
+npm install express express-handlebars method-override mongoose //安裝套件
 ```
 
 3.產生餐廳資料至 MongoDB
